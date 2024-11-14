@@ -3,11 +3,12 @@ package com.delazari.java_spring_example.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.delazari.java_spring_example.entities.Card;
+import com.delazari.java_spring_example.dto.CardMinDTO;
 import com.delazari.java_spring_example.services.CardService;
 
 @RestController
@@ -18,7 +19,8 @@ public class CardController {
 	private CardService service;
 	
 	@GetMapping
-	public List<Card> findAll() {
-		return service.findAll();
+	public ResponseEntity<List<CardMinDTO>> findAll() {
+		List<CardMinDTO> result = service.findAll(); 
+		return ResponseEntity.ok().body(result);
 	}
 }
