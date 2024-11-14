@@ -1,5 +1,6 @@
 package com.delazari.java_spring_example.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -11,7 +12,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_card")
-public class Card {
+public class Card implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
