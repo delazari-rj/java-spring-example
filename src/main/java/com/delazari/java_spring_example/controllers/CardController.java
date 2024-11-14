@@ -21,5 +21,4 @@ public class CardController {
 	public List<Card> findAll() {
 		return service.findAll();
 	}
-
 }
