@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.delazari.java_spring_example.dto.CardMinDTO;
 import com.delazari.java_spring_example.entities.Card;
 import com.delazari.java_spring_example.repositories.CardRepository;
 
@@ -16,7 +17,8 @@ public class CardService {
 	private CardRepository repository;
 	
 	@Transactional(readOnly = true)
-	public List<Card> findAll() {
-		return repository.findAll();
+	public List<CardMinDTO> findAll() {
+		List<Card> result = repository.findAll();
+		return result.stream().map(CardMinDTO::new).toList();
 	}
 }
